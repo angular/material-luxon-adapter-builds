@@ -1,0 +1,51 @@
+{
+  "name": "@angular/material-luxon-adapter",
+  "version": "21.1.0-next.0",
+  "description": "Angular Material Luxon Adapter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/components.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/angular/components/issues"
+  },
+  "homepage": "https://github.com/angular/components#readme",
+  "peerDependencies": {
+    "@angular/material": "21.1.0-next.0",
+    "@angular/core": "^21.0.0-0 || ^21.1.0-0 || ^21.2.0-0 || ^21.3.0-0 || ^22.0.0-0",
+    "luxon": "^3.7.2"
+  },
+  "devDependencies": {
+    "@angular/material": "workspace:*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "ng-update": {
+    "packageGroup": [
+      "@angular/material",
+      "@angular/aria",
+      "@angular/cdk",
+      "@angular/cdk-experimental",
+      "@angular/material-experimental",
+      "@angular/material-luxon-adapter",
+      "@angular/material-moment-adapter",
+      "@angular/material-date-fns-adapter"
+    ]
+  },
+  "schematics": "./schematics/collection.json",
+  "sideEffects": false,
+  "module": "./fesm2022/material-luxon-adapter.mjs",
+  "typings": "./types/material-luxon-adapter.d.ts",
+  "type": "module",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./types/material-luxon-adapter.d.ts",
+      "default": "./fesm2022/material-luxon-adapter.mjs"
+    }
+  }
+}
