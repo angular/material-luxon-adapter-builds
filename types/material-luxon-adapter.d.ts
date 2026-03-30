@@ -1,7 +1,7 @@
 import * as i0 from '@angular/core';
 import { InjectionToken, Provider } from '@angular/core';
 import { DateAdapter, MatDateFormats } from '@angular/material/core';
-import { CalendarSystem, DateTime } from 'luxon';
+import { DateTime, CalendarSystem } from 'luxon';
 
 /** Configurable options for the `LuxonDateAdapter`. */
 interface MatLuxonDateAdapterOptions {
