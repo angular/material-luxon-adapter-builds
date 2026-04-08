@@ -28,7 +28,7 @@ declare class LuxonDateAdapter extends DateAdapter<DateTime> {
     private _useUTC;
     private _firstDayOfWeek;
     private _defaultOutputCalendar;
-    constructor(...args: unknown[]);
+    constructor();
     getYear(date: DateTime): number;
     getMonth(date: DateTime): number;
     getDate(date: DateTime): number;
