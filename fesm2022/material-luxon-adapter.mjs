@@ -1,5 +1,5 @@
 import * as i0 from '@angular/core';
-import { InjectionToken, inject, Injectable, NgModule } from '@angular/core';
+import { InjectionToken, inject, Service, NgModule } from '@angular/core';
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 import { DateTime, Info } from 'luxon';
 
@@ -232,13 +232,14 @@ class LuxonDateAdapter extends DateAdapter {
     ngImport: i0,
     type: LuxonDateAdapter,
     deps: [],
-    target: i0.ɵɵFactoryTarget.Injectable
+    target: i0.ɵɵFactoryTarget.Service
   });
-  static ɵprov = i0.ɵɵngDeclareInjectable({
-    minVersion: "12.0.0",
+  static ɵprov = i0.ɵɵngDeclareService({
+    minVersion: "22.0.0",
     version: "22.0.0-next.9",
     ngImport: i0,
-    type: LuxonDateAdapter
+    type: LuxonDateAdapter,
+    autoProvided: false
   });
 }
 i0.ɵɵngDeclareClassMetadata({
@@ -247,7 +248,10 @@ i0.ɵɵngDeclareClassMetadata({
   ngImport: i0,
   type: LuxonDateAdapter,
   decorators: [{
-    type: Injectable
+    type: Service,
+    args: [{
+      autoProvided: false
+    }]
   }],
   ctorParameters: () => []
 });
