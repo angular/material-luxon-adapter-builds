@@ -228,7 +228,7 @@ class LuxonDateAdapter extends DateAdapter {
   }
   static ɵfac = i0.ɵɵngDeclareFactory({
     minVersion: "12.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: LuxonDateAdapter,
     deps: [],
@@ -236,7 +236,7 @@ class LuxonDateAdapter extends DateAdapter {
   });
   static ɵprov = i0.ɵɵngDeclareService({
     minVersion: "22.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: LuxonDateAdapter,
     autoProvided: false
@@ -244,7 +244,7 @@ class LuxonDateAdapter extends DateAdapter {
 }
 i0.ɵɵngDeclareClassMetadata({
   minVersion: "12.0.0",
-  version: "22.1.0-next.0",
+  version: "22.1.0-next.1",
   ngImport: i0,
   type: LuxonDateAdapter,
   decorators: [{
@@ -274,7 +274,7 @@ const MAT_LUXON_DATE_FORMATS = {
 class LuxonDateModule {
   static ɵfac = i0.ɵɵngDeclareFactory({
     minVersion: "12.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: LuxonDateModule,
     deps: [],
@@ -282,13 +282,13 @@ class LuxonDateModule {
   });
   static ɵmod = i0.ɵɵngDeclareNgModule({
     minVersion: "14.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: LuxonDateModule
   });
   static ɵinj = i0.ɵɵngDeclareInjector({
     minVersion: "12.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: LuxonDateModule,
     providers: [{
@@ -299,7 +299,7 @@ class LuxonDateModule {
 }
 i0.ɵɵngDeclareClassMetadata({
   minVersion: "12.0.0",
-  version: "22.1.0-next.0",
+  version: "22.1.0-next.1",
   ngImport: i0,
   type: LuxonDateModule,
   decorators: [{
@@ -315,7 +315,7 @@ i0.ɵɵngDeclareClassMetadata({
 class MatLuxonDateModule {
   static ɵfac = i0.ɵɵngDeclareFactory({
     minVersion: "12.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: MatLuxonDateModule,
     deps: [],
@@ -323,13 +323,13 @@ class MatLuxonDateModule {
   });
   static ɵmod = i0.ɵɵngDeclareNgModule({
     minVersion: "14.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: MatLuxonDateModule
   });
   static ɵinj = i0.ɵɵngDeclareInjector({
     minVersion: "12.0.0",
-    version: "22.1.0-next.0",
+    version: "22.1.0-next.1",
     ngImport: i0,
     type: MatLuxonDateModule,
     providers: [provideLuxonDateAdapter()]
@@ -337,7 +337,7 @@ class MatLuxonDateModule {
 }
 i0.ɵɵngDeclareClassMetadata({
   minVersion: "12.0.0",
-  version: "22.1.0-next.0",
+  version: "22.1.0-next.1",
   ngImport: i0,
   type: MatLuxonDateModule,
   decorators: [{
