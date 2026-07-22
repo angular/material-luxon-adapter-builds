@@ -78,7 +78,10 @@ class LuxonDateAdapter extends DateAdapter {
     return date.daysInMonth;
   }
   clone(date) {
-    return DateTime.fromObject(date.toObject(), this._getOptions());
+    return DateTime.fromObject(date.toObject(), {
+      ...this._getOptions(),
+      zone: date.zone
+    });
   }
   createDate(year, month, date) {
     const options = this._getOptions();
