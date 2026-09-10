@@ -66,7 +66,7 @@ declare class LuxonDateAdapter extends DateAdapter<DateTime> {
     /** Gets the options that should be used when constructing a new `DateTime` object. */
     private _getOptions;
     static ɵfac: i0.ɵɵFactoryDeclaration<LuxonDateAdapter, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<LuxonDateAdapter>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 
 declare const MAT_LUXON_DATE_FORMATS: MatDateFormats;
