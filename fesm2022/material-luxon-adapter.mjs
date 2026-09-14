@@ -21,6 +21,7 @@ class LuxonDateAdapter extends DateAdapter {
   _useUTC;
   _firstDayOfWeek;
   _defaultOutputCalendar;
+  _timeZone;
   constructor() {
     super();
     const dateLocale = inject(MAT_DATE_LOCALE, {
@@ -32,6 +33,7 @@ class LuxonDateAdapter extends DateAdapter {
     this._useUTC = !!options?.useUtc;
     this._firstDayOfWeek = options?.firstDayOfWeek;
     this._defaultOutputCalendar = options?.defaultOutputCalendar || 'gregory';
+    this.setTimeZone(options?.timeZone);
     this.setLocale(dateLocale || DateTime.local().locale);
   }
   getYear(date) {
@@ -67,7 +69,7 @@ class LuxonDateAdapter extends DateAdapter {
     return days;
   }
   getYearName(date) {
-    return date.toFormat('yyyy', this._getOptions());
+    return date.toFormat('yyyy', this._getLocaleOptions());
   }
   getFirstDayOfWeek() {
     return this._firstDayOfWeek ?? Info.getStartOfWeek({
@@ -79,30 +81,28 @@ class LuxonDateAdapter extends DateAdapter {
   }
   clone(date) {
     return DateTime.fromObject(date.toObject(), {
-      ...this._getOptions(),
+      ...this._getLocaleOptions(),
       zone: date.zone
     });
   }
   createDate(year, month, date) {
-    const options = this._getOptions();
     if (month < 0 || month > 11) {
       throw Error(`Invalid month index "${month}". Month index has to be between 0 and 11.`);
     }
     if (date < 1) {
       throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
     }
-    const result = this._useUTC ? DateTime.utc(year, month + 1, date, options) : DateTime.local(year, month + 1, date, options);
+    const result = this._useUTC ? DateTime.utc(year, month + 1, date, this._getLocaleOptions()) : DateTime.local(year, month + 1, date, this._getDateTimeOptions());
     if (!this.isValid(result)) {
       throw Error(`Invalid date "${date}". Reason: "${result.invalidReason}".`);
     }
     return result;
   }
   today() {
-    const options = this._getOptions();
-    return this._useUTC ? DateTime.utc(options) : DateTime.local(options);
+    return this._useUTC ? DateTime.utc(this._getLocaleOptions()) : DateTime.local(this._getDateTimeOptions());
   }
   parse(value, parseFormat) {
-    const options = this._getOptions();
+    const options = this._getDateTimeOptions();
     if (typeof value == 'string' && value.length > 0) {
       const iso8601Date = DateTime.fromISO(value, options);
       if (this.isValid(iso8601Date)) {
@@ -139,17 +139,17 @@ class LuxonDateAdapter extends DateAdapter {
     }
   }
   addCalendarYears(date, years) {
-    return date.reconfigure(this._getOptions()).plus({
+    return date.reconfigure(this._getLocaleOptions()).plus({
       years
     });
   }
   addCalendarMonths(date, months) {
-    return date.reconfigure(this._getOptions()).plus({
+    return date.reconfigure(this._getLocaleOptions()).plus({
       months
     });
   }
   addCalendarDays(date, days) {
-    return date.reconfigure(this._getOptions()).plus({
+    return date.reconfigure(this._getLocaleOptions()).plus({
       days
     });
   }
@@ -157,7 +157,7 @@ class LuxonDateAdapter extends DateAdapter {
     return date.toISO();
   }
   deserialize(value) {
-    const options = this._getOptions();
+    const options = this._getDateTimeOptions();
     let date;
     if (value instanceof Date) {
       date = DateTime.fromJSDate(value, options);
@@ -218,15 +218,26 @@ class LuxonDateAdapter extends DateAdapter {
     return result;
   }
   addSeconds(date, amount) {
-    return date.reconfigure(this._getOptions()).plus({
+    return date.reconfigure(this._getLocaleOptions()).plus({
       seconds: amount
     });
   }
-  _getOptions() {
+  setTimeZone(timeZone) {
+    if (this._useUTC && timeZone) {
+      throw Error(`Cannot set timeZone if the useUtc option is set to true.`);
+    }
+    this._timeZone = timeZone;
+  }
+  _getLocaleOptions() {
     return {
-      zone: this._useUTC ? 'utc' : undefined,
       locale: this.locale,
       outputCalendar: this._defaultOutputCalendar
+    };
+  }
+  _getDateTimeOptions() {
+    return {
+      ...this._getLocaleOptions(),
+      zone: this._useUTC ? 'utc' : this._timeZone
     };
   }
   static ɵfac = i0.ɵɵngDeclareFactory({

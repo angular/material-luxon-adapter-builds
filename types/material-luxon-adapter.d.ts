@@ -11,6 +11,12 @@ interface MatLuxonDateAdapterOptions {
      */
     useUtc: boolean;
     /**
+     * Sets the timeZone of DateTime objects.
+     * Changing this will change how Angular Material components like DatePicker output dates.
+     * Throws an error if the useUtc parameter is set to true and the timeZone is also provided.
+     */
+    timeZone?: string;
+    /**
      * Sets the first day of week.
      * Changing this will change how Angular Material components like DatePicker shows start of week.
      */
@@ -28,6 +34,7 @@ declare class LuxonDateAdapter extends DateAdapter<DateTime> {
     private _useUTC;
     private _firstDayOfWeek;
     private _defaultOutputCalendar;
+    private _timeZone?;
     constructor();
     getYear(date: DateTime): number;
     getMonth(date: DateTime): number;
@@ -63,8 +70,16 @@ declare class LuxonDateAdapter extends DateAdapter<DateTime> {
     getSeconds(date: DateTime): number;
     parseTime(value: unknown, parseFormat: string | string[]): DateTime | null;
     addSeconds(date: DateTime, amount: number): DateTime;
-    /** Gets the options that should be used when constructing a new `DateTime` object. */
-    private _getOptions;
+    /**
+     * Sets the timeZone of DateTime objects.
+     * Changing this will change how Angular Material components like DatePicker output dates.
+     * Throws an error if the useUtc parameter is set to true and the timeZone is also provided.
+     */
+    setTimeZone(timeZone?: string): void;
+    /** Gets the Locale options that should be used when Luxon expects a LocaleOptions parameter. */
+    private _getLocaleOptions;
+    /** Gets the DateTime options that should be used when Luxon expects a DateTimeOptions, e.g. when constructing/parsing a `DateTime` object. */
+    private _getDateTimeOptions;
     static ɵfac: i0.ɵɵFactoryDeclaration<LuxonDateAdapter, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
